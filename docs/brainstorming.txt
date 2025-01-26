@@ -128,6 +128,19 @@ and removing that extra parameter
 
 
 
+# currying showcase
+let add_four_nums = ([x, y, z, a] x + y + z + a)
+let add_two_nums = add_four_nums(0, $, $, 0) #currying involves only filling in the parameters you want
+let add_six = add_four_nums(2, 5, $, 1)
+
+let res = add_two_nums(3, 2) #results in 5
+let res = add_six(4) #results in 10
+
+
+let y = 3.0
+let z = y -> i8 #converts y to an i8
+let a = 3.0 >> i8 #converts y to an i8 via bits (error in this case cuz size differences)
+#maybe want to switch these two
 
 
 
