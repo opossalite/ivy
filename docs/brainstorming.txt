@@ -1,0 +1,16 @@
+
+
+
+# this is a comment
+"this is also a comment"
+
+"""this is a multiline string...
+ and comment"""
+
+def example: i8 = 32
+def another: chain = "hello there"
+
+#def  
+
+
+
