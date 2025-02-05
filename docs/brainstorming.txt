@@ -7,6 +7,11 @@
 """this is a multiline string...
  and comment"""
 
+'''
+but sometimes you don't wanna use a string, so this is the proper
+multiline comment
+'''
+
 def example: i8 = 32
 def another: chain = "hello there"
 
@@ -14,7 +19,7 @@ def another: chain = "hello there"
 
 
 
-"""
+'''
 primitives:
 
 u8
@@ -50,11 +55,11 @@ algebraic:
 enum
 struct
 
-"""
+'''
 
 
 
-"""
+'''
 action vs expression
 
 action:
@@ -65,11 +70,11 @@ imports
 
 expression:
 everything else
-"""
+'''
 
 
 
-"""
+'''
 what does a definition need?
 a variable name, type, definition
 
@@ -85,7 +90,7 @@ name: type = definition
 go:
 name type = definition
 
-"""
+'''
 
 let x = 3 #supports shadowing
 var y = 4
@@ -111,20 +116,19 @@ let func = [
     param0 + param1
 
 let x = ([x, y] x+y) #lambda, which doesn't care about indentation, only one expression allowed
-let func1 = ([] x
+let func1 = ([] x #actually I think I'll make this improper
 +
 y)
 
 
-
-"""
+'''
 when to inline a function and when to copy the definition?
 well, technically currying is an option for both inlining and referencing
 curry referencing can be done by auto-filling the parameters, while
 inline currying is basically just filling in all the locations with the value
 and removing that extra parameter
 ... might require some thinking, or could just not inline for now and do that later
-"""
+'''
 
 
 
