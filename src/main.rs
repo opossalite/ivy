@@ -15,15 +15,16 @@ pub struct Args {
 
 
 #[derive(Debug, Clone)]
-pub enum CorvusError {
+pub enum IvyError {
     UnmatchedCharacter(char),
+    MixedWhitespace,
 }
-impl fmt::Display for CorvusError {
+impl fmt::Display for IvyError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "Received error: {}", self)
     } 
 }
-impl Error for CorvusError {
+impl Error for IvyError {
 }
 
 
@@ -32,13 +33,15 @@ fn main() {
     let file = args.input_file;
     let raw_contents = fs::read_to_string(file);
 
-    let contents: Vec<char> = match raw_contents {
+    //let contents: Vec<char> = match raw_contents {
+    let contents: String = match raw_contents {
         Err(err) => {
             println!("{:?}", err);
             return;
         },
         Ok(a) => {
-            a.chars().collect()
+            //a.chars().collect()
+            a
         }
     };
 
