@@ -93,7 +93,7 @@ name type = definition
 '''
 
 let x = 3 #supports shadowing
-var y = 4
+var y = 4 #mutable and supports shadowing
 y = 4 #the y at the start will search to see if it's been declared anywhere
 
 
