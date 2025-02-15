@@ -4,6 +4,12 @@ use crate::IvyError;
 
 
 
+const ISOLATE_SYMBOLS: &[&str] = &[
+    "="
+];
+
+
+#[derive(Debug)]
 pub enum Token {
     Tabs(usize),
     Spaces(usize),
@@ -60,23 +66,36 @@ pub fn tokenize(input: &str) -> Result<Vec<Token>, IvyError> {
     ]);
 
     let mut tokens = Vec::new();
+    println!("tokenizing: {:?}", input);
 
     // split the string into a list of list of chars (rather than strings that use u8s)
-    let splitted = input
+    let mut splitted = input
         .split("\n")
         .map(|x| x.chars().collect::<Vec<char>>())
         .collect::<Vec<Vec<char>>>();
 
     let mut spaces = 0;
     let mut tabs = 0;
-    for line in splitted {
+
+    for i in 0..splitted.len() {
+        let line = &splitted[i];
+
+        let mut white_amount = 0;
         for c in line {
             match c {
                 ' ' => spaces += 1,
                 '\t' => tabs += 1,
-                _ => break,
+                _ => {
+                    white_amount = spaces + tabs;
+                    splitted[i] = splitted[i].drain(0..white_amount).collect();
+                    break;
+                },
             }
         }
+
+        let line = &splitted[i]; //update the line after probable draining
+
+        //let clipped_line = splitted.clone().
 
         // once we're here, we've exhausted the initial spaces and tabs
 
@@ -101,8 +120,8 @@ pub fn tokenize(input: &str) -> Result<Vec<Token>, IvyError> {
         }
 
         // handled initial whitespace
-    }
 
+    }
 
     Ok(tokens)
 }

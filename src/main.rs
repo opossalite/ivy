@@ -45,9 +45,8 @@ fn main() {
         }
     };
 
-    let text = "let x=1+3\nlet y =x+4";
-
-    tokenizer::tokenize(&contents);
+    let res = tokenizer::tokenize(&contents);
+    println!("{:?}", res);
 
 }
 
