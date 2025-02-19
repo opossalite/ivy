@@ -13,11 +13,11 @@ const ISOLATE_SYMBOLS: &[&str] = &[
 pub enum Token {
     Tabs(usize),
     Spaces(usize),
-    GenericWhite,
+    GenericWhitespace,
 
-    Parentheses(Vec<Token>),
-    Brackets(Vec<Token>),
-    Braces(Vec<Token>),
+    //Parentheses(Vec<Token>),
+    //Brackets(Vec<Token>),
+    //Braces(Vec<Token>),
     String(String),
     Variable(String),
 
@@ -42,9 +42,9 @@ pub enum Token {
     Let,
     Var,
     Colon,
-    Comma,
-    Dollar,
-    Underscore,
+    //Comma,
+    //Dollar,
+    //Underscore,
 
 
 }
@@ -71,8 +71,23 @@ pub fn tokenize(input: &str) -> Result<Vec<Token>, IvyError> {
     // split the string into a list of list of chars (rather than strings that use u8s)
     let mut splitted = input
         .split("\n")
+        .filter(|x| *x != "")
         .map(|x| x.chars().collect::<Vec<char>>())
         .collect::<Vec<Vec<char>>>();
+
+    //let mut splitted_test = input
+    //    .split("\n")
+    //    .collect::<Vec<&str>>();
+
+    //let mut splitted_test1 = input
+    //    .split("\n")
+    //    .filter(|x| *x != "")
+    //    .collect::<Vec<&str>>();
+    
+    //println!("length of splitted: {}", splitted.len());
+    //println!("{:?}", splitted);
+    //println!("{:?}", splitted_test);
+    //println!("{:?}", splitted_test1);
 
     let mut spaces = 0;
     let mut tabs = 0;
@@ -115,7 +130,7 @@ pub fn tokenize(input: &str) -> Result<Vec<Token>, IvyError> {
                 tokens.push(Token::Tabs(spaces));
             } else {
                 // none are greater than 0
-                tokens.push(Token::GenericWhite);
+                tokens.push(Token::GenericWhitespace);
             }
         }
 
