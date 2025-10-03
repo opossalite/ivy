@@ -146,6 +146,27 @@ let z = y -> i8 #converts y to an i8
 let a = 3.0 >> i8 #converts y to an i8 via bits (error in this case cuz size differences)
 #maybe want to switch these two
 
+'''
+possible example of a main function:
+this will run at the end, turning the file from a script to a normal file
+otherwise without a {main}, the file will just run top to bottom, right??
+
+okay no, let's do it like this:
+python has
+if __name__ == "__main__":
+    do_random_things()
+but here, putting {main} before a variable will simply execute
+that variable if this is in fact a main file, and not otherwise
+
+this way, people can write scripts and they'll work just fine
+and {main}s will still execute if they are the main file that was run
+
+'''
+
+{main}
+let random_name = []
+    do_random_things()
+
 
 
 
